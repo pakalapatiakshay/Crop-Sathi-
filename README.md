@@ -39,7 +39,6 @@ Crop-Sathi helps farmers make better decisions through **hyper-localized crop re
 <img width="1901" height="972" alt="image" src="https://github.com/user-attachments/assets/d9d1f6ed-414b-40d1-a134-2e8d10710f45" />
 
 
-![Crop-Sathi](screenshots/home.png)
 
 ## 🚀 Getting Started
 
