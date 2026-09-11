@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Crop-Sathi Backend Demo</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; }
+  fieldset { margin-bottom: 24px; }
+  label { display: block; margin: 8px 0 2px; }
+  input { width: 100%; padding: 6px; box-sizing: border-box; }
+  button { margin-top: 12px; padding: 8px 16px; cursor: pointer; }
+  pre { background: #f4f4f4; padding: 12px; overflow-x: auto; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Crop-Sathi Backend Demo</h1>
+<p>Talks to the local FastAPI server at <code>http://127.0.0.1:8000</code>. Standalone smoke test — swap the base URL for the real PWA's <code>app.js</code>.</p>
+
+<fieldset>
+  <legend>Crop Recommendation (/predict-crop)</legend>
+  <label>N</label><input id="N" type="number" value="40" />
+  <label>P</label><input id="P" type="number" value="30" />
+  <label>K</label><input id="K" type="number" value="20" />
+  <label>pH (Jharkhand acidic soil ~4.5-6.5)</label><input id="ph" type="number" step="0.1" value="5.5" />
+  <label>Rainfall (mm)</label><input id="rainfall" type="number" value="180" />
+  <button onclick="predictCrop()">Get Recommendation</button>
+  <pre id="cropOut"></pre>
+</fieldset>
+
+<fieldset>
+  <legend>Disease Detection (/analyze-disease)</legend>
+  <input id="imageFile" type="file" accept="image/*" />
+  <button onclick="analyzeDisease()">Analyze Leaf Image</button>
+  <pre id="diseaseOut"></pre>
+</fieldset>
+
+<script>
+const BASE_URL = "http://127.0.0.1:8000";
+
+async function predictCrop() {
+  const body = {
+    N: Number(document.getElementById("N").value),
+    P: Number(document.getElementById("P").value),
+    K: Number(document.getElementById("K").value),
+    ph: Number(document.getElementById("ph").value),
+    rainfall: Number(document.getElementById("rainfall").value),
+  };
+  const out = document.getElementById("cropOut");
+  try {
+    const res = await fetch(`${BASE_URL}/predict-crop`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    out.textContent = JSON.stringify(await res.json(), null, 2);
+  } catch (e) {
+    out.textContent = "Offline or server unreachable — queue this payload in IndexedDB for background sync.\n" + e;
+  }
+}
+
+async function analyzeDisease() {
+  const fileInput = document.getElementById("imageFile");
+  const out = document.getElementById("diseaseOut");
+  if (!fileInput.files.length) { out.textContent = "Pick an image first."; return; }
+  const formData = new FormData();
+  formData.append("file", fileInput.files[0]);
+  try {
+    const res = await fetch(`${BASE_URL}/analyze-disease?model=resnet50`, {
+      method: "POST",
+      body: formData,
+    });
+    out.textContent = JSON.stringify(await res.json(), null, 2);
+  } catch (e) {
+    out.textContent = "Offline or server unreachable — queue the image in IndexedDB for background sync.\n" + e;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.DS_Store
+
+# Raw Soil Health Card export (~48 MB). Re-downloadable from data.gov.in; the
+# derived village profiles it produces are committed instead.
+backend/scripts/data/raw/
+
+# Data and Models
+data/
+*.zip
+backend/scripts/data/
+backend/services/class_weights.json
+backend/services/disease_classes.json
+.vscode/
+
+# Offline speech models for the voice agent (~254 MB). Fetched by
+# `python scripts/download_voice_models.py`, so they are not committed.
+backend/ml_models/voice/

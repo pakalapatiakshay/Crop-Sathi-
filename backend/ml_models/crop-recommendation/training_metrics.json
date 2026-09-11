@@ -1,0 +1,67 @@
+{
+  "dataset_rows": 4200,
+  "n_crops": 22,
+  "train_rows": 3360,
+  "test_rows": 840,
+  "test_size": 0.2,
+  "cv_accuracy_mean": 0.969,
+  "cv_accuracy_std": 0.0054,
+  "train_accuracy": 1.0,
+  "test_accuracy": 0.9774,
+  "feature_importance": {
+    "humidity": 0.2195,
+    "rainfall": 0.2078,
+    "K": 0.1922,
+    "P": 0.1791,
+    "N": 0.116,
+    "temperature": 0.0662,
+    "ph": 0.0191
+  },
+  "misclassifications": [
+    {
+      "actual": "blackgram",
+      "predicted": "lentil",
+      "count": 3
+    },
+    {
+      "actual": "jute",
+      "predicted": "rice",
+      "count": 2
+    },
+    {
+      "actual": "kidneybeans",
+      "predicted": "chickpea",
+      "count": 1
+    },
+    {
+      "actual": "lentil",
+      "predicted": "blackgram",
+      "count": 1
+    },
+    {
+      "actual": "maize",
+      "predicted": "blackgram",
+      "count": 1
+    },
+    {
+      "actual": "mothbeans",
+      "predicted": "blackgram",
+      "count": 2
+    },
+    {
+      "actual": "mothbeans",
+      "predicted": "lentil",
+      "count": 3
+    },
+    {
+      "actual": "mungbean",
+      "predicted": "lentil",
+      "count": 1
+    },
+    {
+      "actual": "rice",
+      "predicted": "jute",
+      "count": 5
+    }
+  ]
+}

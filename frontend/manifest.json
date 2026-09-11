@@ -1,0 +1,12 @@
+{
+  "name": "Crop Sathi — AI Crop Recommendation",
+  "short_name": "Crop Sathi",
+  "description": "AI powered crop recommendation, weather, mandi prices and government schemes for Indian farmers.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#294936",
+  "categories": ["agriculture", "weather", "productivity"],
+  "lang": "en"
+}
