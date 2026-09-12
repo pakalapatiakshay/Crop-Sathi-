@@ -1672,7 +1672,7 @@
     }
 
     // Fetch weather if on weather page and no data yet
-    if (hash === "#/weather" && !weatherData && !weatherLoading && !isOffline) {
+    if (hash === "#/weather" && !weatherData && !weatherLoading && weatherError === null && !isOffline) {
       fetchLiveWeather();
     }
 
@@ -1686,7 +1686,7 @@
       if (dashboardHistory === null && !dashboardLoading) {
         loadDashboardHistory();
       }
-      if (!weatherData && !weatherLoading && !isOffline) {
+      if (!weatherData && !weatherLoading && weatherError === null && !isOffline) {
         fetchLiveWeather();
       }
       if (typeof marketLoaded !== 'undefined' && !marketLoaded && !marketLoading && !isOffline) {
