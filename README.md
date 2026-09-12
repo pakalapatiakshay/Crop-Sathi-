@@ -89,4 +89,4 @@ For detailed setup instructions, backend configuration, model training/retrainin
 **Crop-Sathi** aims to make AI-powered agricultural assistance more **accessible, localized, and practical for farmers**, particularly in regions where reliable internet connectivity is not always available.
 
 ⭐ **If you find this project useful, consider giving it a star!**
->>>>>>> 58aef702b72e5cd149aeb0ab6c4be584446a392f
+
