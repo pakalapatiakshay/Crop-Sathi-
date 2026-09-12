@@ -63,8 +63,6 @@ git submodule update --init --recursive
 
 For detailed setup instructions, backend configuration, model training/retraining, and voice-agent configuration, refer to the project documentation:
 
-**[Crop-Sathi Documentation](Crop-sathi/README.md)**
-
 ## 📁 Project Structure
 
 ```text
